@@ -7,7 +7,6 @@ import (
 	"path/filepath"
 
 	"github.com/annidy/gogrepsymbol/seacher"
-	"github.com/facebookgo/symwalk"
 )
 
 func init() {
@@ -49,7 +48,7 @@ func main() {
 			panic(err)
 		}
 
-		err = symwalk.Walk(folder, func(path string, info os.FileInfo, err error) error {
+		Walk(folder, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				fmt.Fprintln(os.Stderr, err)
 				return nil
@@ -65,8 +64,5 @@ func main() {
 
 			return nil
 		})
-		if err != nil {
-			panic(err)
-		}
 	}
 }
